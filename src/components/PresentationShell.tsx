@@ -56,35 +56,38 @@ export function PresentationShell({ children }: { children: ReactNode }) {
         style={{ transform: `scale(${scale})` }}
       >
         <header className="lesson-header">
-          <div className="left">
-            <span className="kicker">Grade 2 · AI Literacy</span>
-          </div>
-          <div className="center">
-            <h1 className="header-title">
-              Lesson {lesson.number}: {lesson.title}
-            </h1>
-          </div>
-          <div className="right">
-            {teacher ? (
-              <div className="clock-block">
-                <div className="date">{formatLongDate(now)}</div>
-                <div className="time">{formatClock(now)}</div>
+          {teacher ? (
+            <>
+              <div className="left">
+                <span className="kicker">Grade 2 · AI Literacy</span>
               </div>
-            ) : (
-              <span className="screen-count">
-                {screen.index + 1} / {screenCount}
-              </span>
-            )}
-          </div>
+              <div className="center">
+                <h1 className="header-title">
+                  Lesson {lesson.number}: {lesson.title}
+                </h1>
+              </div>
+              <div className="right">
+                <div className="clock-block">
+                  <div className="date">{formatLongDate(now)}</div>
+                  <div className="time">{formatClock(now)}</div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {leadStrategy ? <span className="strategy-chip">{leadStrategy}</span> : <span />}
+              <p className="ican">{screen.iCan}</p>
+              <span className="screen-count">{screen.index + 1} / {screenCount}</span>
+            </>
+          )}
         </header>
 
+        {teacher ? (
         <div className="progress-wrap">
-          {teacher ? (
             <div className="progress-meta">
               <span>Lesson {lesson.number} of {lesson.totalLessons}</span>
               <span>Screen {screen.index + 1} of {screenCount}</span>
             </div>
-          ) : null}
           <div className="stage-track" aria-label="Lesson stages">
             {STAGES.map((stage) => {
               const seen = lesson.screens.some((item) => item.stage === stage && item.index < screen.index);
@@ -103,23 +106,30 @@ export function PresentationShell({ children }: { children: ReactNode }) {
             <span style={{ width: `${progressPct}%` }} />
           </div>
         </div>
+        ) : null}
 
         <main className="screen-main">
+          {teacher ? (
           <div className="screen-toolbar">
             <p className="ican">{screen.iCan}</p>
             {leadStrategy ? <span className="strategy-chip">{leadStrategy}</span> : null}
           </div>
+          ) : null}
           {children}
         </main>
 
         <footer className="lesson-footer">
           <div className="ctrl-group">
             <Btn onClick={app.goPrev} disabled={screen.index === 0}>← BACK</Btn>
+            {teacher ? (
+              <>
             <Btn onClick={app.goHome}>HOME</Btn>
             <Btn onClick={app.toggleFullscreen}>{app.isFullscreen ? 'EXIT FULL' : 'FULLSCREEN'}</Btn>
             <Btn onClick={app.toggleMute} className="icon-btn" aria-label={state.muted ? 'Unmute' : 'Mute'}>
               {state.muted ? '🔇' : '🔊'}
             </Btn>
+              </>
+            ) : null}
           </div>
 
           {teacher ? (
@@ -155,7 +165,7 @@ export function PresentationShell({ children }: { children: ReactNode }) {
               {formatMmSs(state.activityTimer.remainingMs)}
             </div>
           ) : (
-            <div className="footer-title">{screen.studentTitle.replace(/^[^\w]+/, '')}</div>
+            <span />
           )}
 
           <div className="ctrl-group">
@@ -165,15 +175,20 @@ export function PresentationShell({ children }: { children: ReactNode }) {
                   SCORES
                 </Btn>
                 <Btn onClick={app.resetActivity}>RESET ACTIVITY</Btn>
+            <Btn
+                  variant="pink"
+              onClick={app.toggleTeacherMode}
+            >
+                  Teacher Mode
+            </Btn>
               </>
             ) : null}
             <Btn
-              variant={teacher ? 'pink' : 'default'}
-              onClick={app.toggleTeacherMode}
+              variant="primary"
+              className="btn-next"
+              onClick={app.goNext}
+              disabled={screen.index >= screenCount - 1}
             >
-              {teacher ? 'Teacher Mode' : 'Teacher'}
-            </Btn>
-            <Btn variant="primary" onClick={app.goNext} disabled={screen.index >= screenCount - 1}>
               NEXT →
             </Btn>
           </div>

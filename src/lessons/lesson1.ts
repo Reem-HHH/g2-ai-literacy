@@ -347,7 +347,7 @@ export const lesson1: LessonDefinition = {
         ],
         expectedAnswers: [
           'Use: clear cats of different types.',
-          'Do not use: dog, car, blurry cat, wrongly labelled cat.',
+          'Do not use: dog, car, wrongly labelled cat.',
         ],
         misconceptions: ['More pictures is always better, even if they are wrong.'],
         support: [...supportBase, 'Teacher can drag for the class based on group votes.'],

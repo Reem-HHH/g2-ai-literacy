@@ -90,7 +90,7 @@ export function Screen13() {
               </button>
             ))}
           </div>
-          <div className="ctrl-group" style={{ justifyContent: 'center', marginTop: 12 }}>
+          <div className="ctrl-group" style={{ justifyContent: 'center' }}>
             <Btn
               variant="primary"
               disabled={!state.selected}
@@ -140,7 +140,7 @@ export function Screen14() {
       </div>
       <p className="screen-sub">Pixel learns only from these orange cats. What might happen when Pixel sees a cat that looks different?</p>
       <div className="row" style={{ justifyContent: 'center' }}>
-        <div className="photo-frame" style={{ width: 200, height: 140 }}>
+        <div className="photo-frame" style={{ width: 160, height: 110 }}>
           <Photo asset={assets.catClear1} />
         </div>
       </div>

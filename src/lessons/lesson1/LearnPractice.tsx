@@ -47,7 +47,7 @@ export function Screen05() {
           </div>
         ))}
       </div>
-      <div className="ctrl-group" style={{ justifyContent: 'center', marginTop: 12 }}>
+      <div className="ctrl-group" style={{ justifyContent: 'center' }}>
         <Btn
           variant="primary"
           onClick={() => {
@@ -202,7 +202,7 @@ export function Screen08() {
           </div>
         ))}
       </div>
-      <div className="ctrl-group" style={{ justifyContent: 'center', marginTop: 8 }}>
+      <div className="ctrl-group" style={{ justifyContent: 'center' }}>
         <Btn
           variant="primary"
           onClick={() => setState({ ...state, revealed: Math.min(4, state.revealed + 1) })}

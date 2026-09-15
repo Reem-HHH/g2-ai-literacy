@@ -12,10 +12,10 @@ export function Screen10() {
   return (
     <div className="screen-body">
       <h2 className="screen-title">GOOD DATA OR BAD DATA?</h2>
-      <div className="mission-layout" style={{ gridTemplateColumns: '200px 1fr' }}>
+      <div className="mission-layout" style={{ gridTemplateColumns: '240px 1fr' }}>
         <div>
-          <Pixel mood="confused" size={180} />
-          <div className="speech" style={{ fontSize: 22, marginTop: 8 }}>
+          <Pixel mood="confused" size={160} />
+          <div className="speech" style={{ fontSize: 24, marginTop: 8, padding: '14px 16px' }}>
             Some examples help me... but some examples confuse me!
           </div>
         </div>
@@ -24,10 +24,10 @@ export function Screen10() {
             <div className="photo-frame" style={{ height: 220 }}>
               <Photo asset={assets.birdEagle} />
             </div>
-            <p style={{ fontSize: 26, margin: '10px 0 0' }}>Label: BIRD</p>
+            <p style={{ fontSize: 32, margin: '10px 0 0' }}>Label: BIRD</p>
             {state.revealed ? (
               <>
-                <p style={{ fontSize: 28, margin: 0 }}>GOOD DATA</p>
+                <p style={{ fontSize: 36, margin: 0 }}>GOOD DATA</p>
                 <p>Clear, correct, and useful</p>
               </>
             ) : (
@@ -38,10 +38,10 @@ export function Screen10() {
             <div className="photo-frame" style={{ height: 220 }}>
               <Photo asset={assets.birdRobin} />
             </div>
-            <p style={{ fontSize: 26, margin: '10px 0 0' }}>Label: CAT</p>
+            <p style={{ fontSize: 32, margin: '10px 0 0' }}>Label: CAT</p>
             {state.revealed ? (
               <>
-                <p style={{ fontSize: 28, margin: 0 }}>BAD DATA</p>
+                <p style={{ fontSize: 36, margin: 0 }}>BAD DATA</p>
                 <p>The photo is clear, but the label is wrong</p>
               </>
             ) : (
@@ -105,7 +105,7 @@ export function Screen11() {
         {round.prompt ? <p className="screen-sub">{round.prompt}</p> : null}
         {round.label ? <p className="screen-sub">Label: {round.label}</p> : null}
       </div>
-      <div className="ctrl-group" style={{ justifyContent: 'center', marginTop: 8 }}>
+      <div className="ctrl-group" style={{ justifyContent: 'center' }}>
         <Btn large variant={state.vote === 'good' ? 'good' : 'default'} onClick={() => setState({ ...state, vote: 'good', checked: false })}>
           👍 GOOD DATA
         </Btn>
@@ -166,10 +166,8 @@ const TRAIN_CARDS: { id: string; asset: ImageAsset; label: string; blur?: boolea
   { id: 'cat2', asset: assets.catClear2, label: 'CAT', good: true },
   { id: 'cat3', asset: assets.catClear3, label: 'CAT', good: true },
   { id: 'dog', asset: assets.dogClear, label: 'DOG', good: false },
-  { id: 'blur', asset: assets.catTabbyKitten, label: 'CAT', blur: true, good: false },
   { id: 'wrong', asset: assets.catOrange, label: 'DOG', good: false },
   { id: 'car', asset: assets.car, label: 'CAR', good: false },
-  { id: 'cat4', asset: assets.catCream, label: 'CAT', good: true },
 ];
 
 const defaultPlacements = (): Record<string, Zone> =>
@@ -228,15 +226,24 @@ export function Screen12() {
   return (
     <div className="screen-body">
       <h2 className="screen-title">🤖 TRAIN PIXEL!</h2>
-      <p className="screen-sub">Pixel needs to learn what a CAT looks like. Drag or tap, then tap a zone.</p>
-      <div className="grid-2">
+      <p className="screen-sub">Pixel needs to learn what a CAT looks like. Tap a card, then tap a zone.</p>
+      <div
+        className="drop-zone card-tray"
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={() => state.selected && move(state.selected, 'tray')}
+        onClick={() => state.selected && move(state.selected, 'tray')}
+      >
+        <strong>Cards</strong>
+        <div className="tray">{renderCards('tray')}</div>
+      </div>
+      <div className="grid-2 train-zones">
         <div
           className={`drop-zone ${state.selected ? 'active' : ''}`}
           onDragOver={(e) => e.preventDefault()}
           onDrop={() => state.selected && move(state.selected, 'train')}
           onClick={() => state.selected && move(state.selected, 'train')}
         >
-          <strong>✅ USE TO TRAIN PIXEL</strong>
+          <strong>USE TO TRAIN PIXEL</strong>
           <div className="tray">{renderCards('train')}</div>
         </div>
         <div
@@ -245,21 +252,11 @@ export function Screen12() {
           onDrop={() => state.selected && move(state.selected, 'reject')}
           onClick={() => state.selected && move(state.selected, 'reject')}
         >
-          <strong>❌ DO NOT USE</strong>
+          <strong>DO NOT USE</strong>
           <div className="tray">{renderCards('reject')}</div>
         </div>
       </div>
-      <div
-        className="drop-zone"
-        style={{ marginTop: 8, minHeight: 130 }}
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={() => state.selected && move(state.selected, 'tray')}
-        onClick={() => state.selected && move(state.selected, 'tray')}
-      >
-        <strong>Cards</strong>
-        <div className="tray">{renderCards('tray')}</div>
-      </div>
-      <div className="ctrl-group" style={{ justifyContent: 'center', marginTop: 8 }}>
+      <div className="ctrl-group" style={{ justifyContent: 'center' }}>
         <Btn variant="primary" large onClick={train}>TRAIN PIXEL</Btn>
       </div>
       <p className="feedback">

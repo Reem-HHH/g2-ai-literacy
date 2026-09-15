@@ -101,7 +101,7 @@ export function Screen03() {
           <div key={label} className={`card ${state.step === idx + 1 ? 'on' : ''}`}>{label}</div>
         ))}
       </div>
-      <div className="ctrl-group" style={{ justifyContent: 'center', marginTop: 10 }}>
+      <div className="ctrl-group" style={{ justifyContent: 'center' }}>
         <Btn
           variant="primary"
           onClick={() => {
