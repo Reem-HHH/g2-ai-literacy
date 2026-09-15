@@ -126,12 +126,12 @@ export function Screen13() {
 export function Screen14() {
   const { sound, markActivityComplete, screen } = useApp();
   const [state, setState] = useActivityState({ selected: null as string | null, checked: false });
-  const orangeCats = [assets.catClear3, assets.catOrange, assets.catGingerSleep, assets.catBeige];
+  const orangeCats = [assets.catClear3, assets.catOrange, assets.catGingerSleep];
 
   return (
     <div className="screen-body">
-      <h2 className="screen-title">🌟 BONUS AI TRAINER CHALLENGE</h2>
-      <div className="grid-4" style={{ height: 200 }}>
+      <h2 className="screen-title">BONUS AI TRAINER CHALLENGE</h2>
+      <div className="bonus-cats">
         {orangeCats.map((asset) => (
           <div className="photo-frame" key={asset.src}>
             <Photo asset={asset} />
@@ -140,27 +140,27 @@ export function Screen14() {
       </div>
       <p className="screen-sub">Pixel learns only from these orange cats. What might happen when Pixel sees a cat that looks different?</p>
       <div className="row" style={{ justifyContent: 'center' }}>
-        <div className="photo-frame" style={{ width: 180, height: 120 }}>
+        <div className="photo-frame" style={{ width: 200, height: 140 }}>
           <Photo asset={assets.catClear1} />
         </div>
       </div>
-      <div style={{ display: 'grid', gap: 10, marginTop: 8 }}>
+      <div style={{ display: 'grid', gap: 10 }}>
         <button
           type="button"
           className={`choice ${state.selected === 'a' ? 'selected' : ''} ${state.checked && state.selected === 'a' ? 'wrong' : ''}`}
           onClick={() => setState({ selected: 'a', checked: false })}
         >
-          A. Pixel will definitely understand immediately.
+          A. Pixel will know straight away.
         </button>
         <button
           type="button"
           className={`choice ${state.selected === 'b' ? 'selected' : ''} ${state.checked && state.selected === 'b' ? 'correct' : ''}`}
           onClick={() => setState({ selected: 'b', checked: false })}
         >
-          B. Pixel might become confused because it needs more different examples.
+          B. Pixel might get confused. It needs more different examples.
         </button>
       </div>
-      <div className="ctrl-group" style={{ justifyContent: 'center', marginTop: 10 }}>
+      <div className="ctrl-group" style={{ justifyContent: 'center' }}>
         <Btn
           variant="primary"
           disabled={!state.selected}
@@ -178,7 +178,7 @@ export function Screen14() {
         {state.checked && state.selected === 'b'
           ? 'Better training data includes enough useful and different examples.'
           : state.checked
-            ? '🤔 Try again'
+            ? 'Try again'
             : ''}
       </p>
     </div>

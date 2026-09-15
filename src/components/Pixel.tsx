@@ -37,6 +37,7 @@ export function Pixel({ mood = 'curious', size = 240, className }: Props) {
       role="img"
       aria-label={`Pixel the robot looking ${mood}`}
     >
+      <circle cx="100" cy="110" r="92" fill="white" opacity="0.92" />
       <ellipse cx="100" cy="208" rx="48" ry="8" fill="rgba(27,42,74,0.12)" />
       <rect x="62" y="142" width="76" height="58" rx="22" fill="#60a5fa" stroke="#1e3a5f" strokeWidth="3" />
       <rect x="70" y="150" width="60" height="42" rx="16" fill="#dbeafe" />

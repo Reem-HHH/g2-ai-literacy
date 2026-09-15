@@ -33,6 +33,9 @@ export type LessonScreen = {
   title: string;
   studentTitle: string;
   objectives: LearningObjective[];
+  /** Kid-facing success line shown at the top of the slide. */
+  iCan: string;
+  /** First item is the projector strategy tag; the rest stay in teacher notes. */
   strategies: string[];
   recommendedMinutes: number;
   teacher: TeacherNotes;

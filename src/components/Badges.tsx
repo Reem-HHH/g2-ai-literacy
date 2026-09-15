@@ -1,23 +1,4 @@
 import type { ButtonHTMLAttributes } from 'react';
-import { formatObjective } from '../utils/format';
-import type { LearningObjective } from '../lessons/types';
-
-export function ObjectiveBadge({ objectives }: { objectives: LearningObjective[] }) {
-  if (objectives.length === 0) return null;
-  return <span className="badge">{formatObjective(objectives)}</span>;
-}
-
-export function StrategyBadge({ strategies }: { strategies: string[] }) {
-  return (
-    <>
-      {strategies.map((strategy) => (
-        <span className="badge" key={strategy}>
-          {strategy}
-        </span>
-      ))}
-    </>
-  );
-}
 
 export function ActivityBadge({ children }: { children: string }) {
   return <span className="badge">{children}</span>;

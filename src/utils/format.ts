@@ -19,9 +19,3 @@ export function formatMmSs(ms: number): string {
   const s = total % 60;
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
-
-export function formatObjective(objectives: string[]): string {
-  if (objectives.length === 0) return '';
-  if (objectives.length === 1) return `🎯 ${objectives[0]}`;
-  return `🎯 ${objectives.join(' + ')}`;
-}

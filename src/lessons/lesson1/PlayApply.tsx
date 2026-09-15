@@ -11,39 +11,53 @@ export function Screen10() {
 
   return (
     <div className="screen-body">
-      <h2 className="screen-title">👍 GOOD DATA OR 👎 BAD DATA?</h2>
-      <div className="mission-layout" style={{ gridTemplateColumns: '220px 1fr' }}>
+      <h2 className="screen-title">GOOD DATA OR BAD DATA?</h2>
+      <div className="mission-layout" style={{ gridTemplateColumns: '200px 1fr' }}>
         <div>
-          <Pixel mood="confused" size={200} />
-          <div className="speech" style={{ fontSize: 24, marginTop: 8 }}>
+          <Pixel mood="confused" size={180} />
+          <div className="speech" style={{ fontSize: 22, marginTop: 8 }}>
             Some examples help me... but some examples confuse me!
           </div>
         </div>
         <div className="compare">
-          <div className="card good">
-            <div className="photo-frame" style={{ height: 240 }}>
+          <div className={`card ${state.revealed ? 'good' : ''}`}>
+            <div className="photo-frame" style={{ height: 220 }}>
               <Photo asset={assets.birdEagle} />
             </div>
             <p style={{ fontSize: 26, margin: '10px 0 0' }}>Label: BIRD</p>
-            <p style={{ fontSize: 30, margin: 0 }}>👍 GOOD DATA</p>
-            <p>✅ Clear &nbsp; ✅ Correct &nbsp; ✅ Useful</p>
+            {state.revealed ? (
+              <>
+                <p style={{ fontSize: 28, margin: 0 }}>GOOD DATA</p>
+                <p>Clear, correct, and useful</p>
+              </>
+            ) : (
+              <p className="screen-sub">Look. Talk. Then reveal.</p>
+            )}
           </div>
-          <div className="card bad">
-            <div className="photo-frame" style={{ height: 240 }}>
-              <Photo asset={assets.birdRobin} blur />
+          <div className={`card ${state.revealed ? 'bad' : ''}`}>
+            <div className="photo-frame" style={{ height: 220 }}>
+              <Photo asset={assets.birdRobin} />
             </div>
             <p style={{ fontSize: 26, margin: '10px 0 0' }}>Label: CAT</p>
-            <p style={{ fontSize: 30, margin: 0 }}>👎 BAD DATA</p>
-            <p>❌ Unclear &nbsp; ❌ Wrong &nbsp; ❌ Confusing</p>
+            {state.revealed ? (
+              <>
+                <p style={{ fontSize: 28, margin: 0 }}>BAD DATA</p>
+                <p>The photo is clear, but the label is wrong</p>
+              </>
+            ) : (
+              <p className="screen-sub">Look. Talk. Then reveal.</p>
+            )}
           </div>
         </div>
       </div>
-      <div className="ctrl-group" style={{ justifyContent: 'center', marginTop: 8 }}>
-        <Btn variant="primary" onClick={() => setState({ revealed: true })}>REVEAL</Btn>
+      <div className="ctrl-group" style={{ justifyContent: 'center' }}>
+        <Btn variant="primary" onClick={() => setState({ revealed: true })} disabled={state.revealed}>
+          REVEAL
+        </Btn>
       </div>
       <p className="feedback">
         {state.revealed
-          ? 'Good data helps AI learn better. Bad data can confuse AI.'
+          ? 'Good data is clear, correct, and useful. A wrong label confuses AI. A blurry photo is bad data too, because AI cannot see it clearly.'
           : ''}
       </p>
     </div>
@@ -69,7 +83,7 @@ const ROUNDS: Round[] = [
 ];
 
 export function Screen11() {
-  const { sound, bumpScore, markActivityComplete, screen } = useApp();
+  const { sound, bumpScore, markActivityComplete, screen, state: appState } = useApp();
   const [state, setState] = useActivityState({
     round: 0,
     vote: null as 'good' | 'bad' | null,
@@ -132,10 +146,14 @@ export function Screen11() {
         <Btn onClick={() => setState({ round: 0, vote: null, checked: false, score: 0, scoredRound: false })}>
           RESET GAME
         </Btn>
-        <span className="badge">Optional team point:</span>
-        {(['robot', 'star', 'rocket', 'brain'] as TeamId[]).map((team) => (
-          <Btn key={team} className="tiny" onClick={() => bumpScore(team, 1)}>+ {team}</Btn>
-        ))}
+        {appState.teacherMode ? (
+          <>
+            <span className="badge">Optional team point:</span>
+            {(['robot', 'star', 'rocket', 'brain'] as TeamId[]).map((team) => (
+              <Btn key={team} className="tiny" onClick={() => bumpScore(team, 1)}>+ {team}</Btn>
+            ))}
+          </>
+        ) : null}
       </div>
     </div>
   );

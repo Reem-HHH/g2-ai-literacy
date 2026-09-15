@@ -9,18 +9,15 @@ import { VocabularyCard } from '../../components/VocabularyCard';
 export const birdPhotos = [
   { key: 'robin', asset: assets.birdRobin, label: 'Robin' },
   { key: 'parrot', asset: assets.birdParrot, label: 'Parrot' },
-  { key: 'flamingo', asset: assets.birdFlamingo, label: 'Flamingo' },
   { key: 'kingfisher', asset: assets.birdKingfisher, label: 'Kingfisher' },
   { key: 'eagle', asset: assets.birdEagle, label: 'Eagle' },
 ];
 
 const VOCAB = [
   { word: 'AI', icon: '🤖', def: 'A computer or machine that can learn using information.', color: '#dbeafe' },
-  { word: 'DATA', icon: '📚', def: 'Information AI uses to learn.', color: '#fde68a' },
-  { word: 'EXAMPLE', icon: '🧩', def: 'One sample that helps AI learn.', color: '#e9d5ff' },
-  { word: 'PATTERN', icon: '🔍', def: 'Something that is the same or happens again.', color: '#bbf7d0' },
-  { word: 'GOOD DATA', icon: '👍', def: 'Clear, correct and useful examples.', color: '#d1fae5' },
-  { word: 'BAD DATA', icon: '👎', def: 'Unclear, wrong or confusing examples.', color: '#fecaca' },
+  { word: 'DATA', icon: '📚', def: 'Information AI uses to learn. Pictures, words, and sounds can be data.', color: '#fde68a' },
+  { word: 'EXAMPLE', icon: '🧩', def: 'One sample that helps AI learn. Data is made of examples.', color: '#e9d5ff' },
+  { word: 'PATTERN', icon: '🔍', def: 'Something that is the same in many examples.', color: '#bbf7d0' },
 ];
 
 export function Screen05() {
@@ -28,9 +25,9 @@ export function Screen05() {
   const [state, setState] = useActivityState({ step: 0, oral: false });
 
   const steps = [
-    { title: '📚 DATA', text: 'Lots of examples' },
-    { title: '🔍 PATTERNS', text: 'What is the same?' },
-    { title: '🤖 AI LEARNS', text: 'It can make a guess' },
+    { title: 'DATA', text: 'Lots of examples' },
+    { title: 'PATTERNS', text: 'What is the same?' },
+    { title: 'AI LEARNS', text: 'It can recognise something new' },
   ];
 
   return (
@@ -38,9 +35,15 @@ export function Screen05() {
       <h2 className="screen-title">🧠 HOW DOES AI LEARN?</h2>
       <div className="steps">
         {steps.map((step, idx) => (
-          <div key={step.title} className={`card step-card ${state.step > idx ? 'show' : ''}`}>
-            <strong>{step.title}</strong>
-            <p>{step.text}</p>
+          <div key={step.title} className="card step-card show">
+            {state.step > idx ? (
+              <>
+                <strong>{step.title}</strong>
+                <p>{step.text}</p>
+              </>
+            ) : (
+              <strong>?</strong>
+            )}
           </div>
         ))}
       </div>
@@ -56,13 +59,17 @@ export function Screen05() {
           NEXT IDEA
         </Btn>
       </div>
-      <p className="screen-sub">What do we call the information AI learns from?</p>
-      <RevealCard
-        revealed={state.oral}
-        onReveal={() => setState({ ...state, oral: true })}
-      >
-        DATA
-      </RevealCard>
+      {state.step >= 3 ? (
+        <>
+          <p className="screen-sub">What do we call the information AI learns from?</p>
+          <RevealCard
+            revealed={state.oral}
+            onReveal={() => setState({ ...state, oral: true })}
+          >
+            DATA
+          </RevealCard>
+        </>
+      ) : null}
     </div>
   );
 }
@@ -152,13 +159,13 @@ export function Screen07() {
     <div className="screen-body">
       <h2 className="screen-title">🔎 AI DETECTIVE: FIND THE PATTERN!</h2>
       <BirdStrip />
-      <p className="screen-sub">What do MOST of these birds have in common?</p>
+      <p className="screen-sub">Find TWO things most of these birds have in common.</p>
       <div className="tps">
-        <div className="card">👀 LOOK</div>
-        <div className="card">🗣 TALK</div>
-        <div className="card">🤝 AGREE</div>
+        <div className="card">LOOK</div>
+        <div className="card">TALK</div>
+        <div className="card">AGREE</div>
       </div>
-      <p className="screen-sub">1. Study the pictures.  2. Talk with your group.  3. Choose TWO useful patterns.</p>
+      <p className="screen-sub">1. Study the pictures.  2. Talk with your group.  3. Agree on two useful patterns.</p>
       <div className="ctrl-group" style={{ justifyContent: 'center' }}>
         <Btn
           variant="primary"
@@ -182,7 +189,7 @@ export function Screen08() {
     choice: null as string | null,
     checked: false,
   });
-  const patterns = ['🪽 Wings', '🐤 Beak', '🪶 Feathers', '🦵 Two legs'];
+  const patterns = ['Wings', 'Beak', 'Feathers', 'Two legs'];
 
   return (
     <div className="screen-body">
@@ -206,8 +213,8 @@ export function Screen08() {
       </div>
       <p className="screen-sub">“All birds are green.”  Is this a useful pattern?</p>
       <div className="ctrl-group" style={{ justifyContent: 'center' }}>
-        <Btn large variant={state.choice === 'yes' ? 'good' : 'default'} onClick={() => setState({ ...state, choice: 'yes', checked: false })}>✅ YES</Btn>
-        <Btn large variant={state.choice === 'no' ? 'bad' : 'default'} onClick={() => setState({ ...state, choice: 'no', checked: false })}>❌ NO</Btn>
+        <Btn large variant={state.choice === 'yes' ? 'good' : 'default'} onClick={() => setState({ ...state, choice: 'yes', checked: false })}>YES</Btn>
+        <Btn large variant={state.choice === 'no' ? 'bad' : 'default'} onClick={() => setState({ ...state, choice: 'no', checked: false })}>NO</Btn>
         <Btn
           variant="primary"
           disabled={!state.choice}
@@ -249,12 +256,12 @@ export function Screen09() {
         <div>
           <div className="flow">
             <div className="node">REAL BIRD PHOTOS</div>
-            <span>↓</span>
+            <span aria-hidden="true">→</span>
             <div className="node">LOOK FOR SIMILARITIES</div>
-            <span>↓</span>
+            <span aria-hidden="true">→</span>
             <div className="node">FIND PATTERNS</div>
-            <span>↓</span>
-            <div className="node">RECOGNIZE A BIRD</div>
+            <span aria-hidden="true">→</span>
+            <div className="node">RECOGNISE A BIRD</div>
           </div>
           {state.q < 2 ? (
             <div style={{ marginTop: 18 }}>

@@ -1,6 +1,6 @@
 import type { AppPersistedState, TeamScores } from '../lessons/types';
 
-export const STORAGE_KEY = 'pixel-academy-v1';
+export const STORAGE_KEY = 'pixel-academy-v2';
 
 export const defaultScores: TeamScores = {
   robot: 0,

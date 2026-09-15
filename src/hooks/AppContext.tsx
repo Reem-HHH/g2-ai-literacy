@@ -134,8 +134,13 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [goToScreen]);
 
   const goHome = useCallback(() => {
-    goToScreen(0);
-  }, [goToScreen]);
+    setState((prev) => ({
+      ...prev,
+      currentScreenIndex: 0,
+      activities: {},
+      scoreboardOpen: false,
+    }));
+  }, []);
 
   const toggleTeacherMode = useCallback(() => {
     setState((prev) => {

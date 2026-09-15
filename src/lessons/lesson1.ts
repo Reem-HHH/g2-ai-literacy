@@ -27,7 +27,8 @@ export const lesson1: LessonDefinition = {
       title: 'Mission Launch',
       studentTitle: 'TEACH PIXEL HOW TO LEARN!',
       objectives: loBoth,
-      strategies: ['Storytelling + Inquiry'],
+      iCan: 'I can help Pixel learn.',
+      strategies: ['Storytelling'],
       recommendedMinutes: 2,
       teacher: {
         time: '2 minutes',
@@ -51,7 +52,8 @@ export const lesson1: LessonDefinition = {
       title: "Today's Mission",
       studentTitle: "TODAY'S MISSION",
       objectives: loBoth,
-      strategies: ['Learning intentions + success criteria'],
+      iCan: 'I can say what I will learn today.',
+      strategies: ['Learning intentions'],
       recommendedMinutes: 1,
       teacher: {
         time: '1 minute',
@@ -74,6 +76,7 @@ export const lesson1: LessonDefinition = {
       title: 'Activate Prior Knowledge',
       studentTitle: 'WHAT DO YOU ALREADY KNOW ABOUT AI?',
       objectives: lo1,
+      iCan: 'I can notice AI around me.',
       strategies: ['Think–Pair–Share'],
       recommendedMinutes: 3,
       teacher: {
@@ -113,7 +116,8 @@ export const lesson1: LessonDefinition = {
       title: 'Video Introduction',
       studentTitle: 'WATCH LIKE AN AI DETECTIVE',
       objectives: lo1,
-      strategies: ['Multimedia Learning', 'Focused Listening'],
+      iCan: 'I can listen for how AI learns.',
+      strategies: ['Focused listening'],
       recommendedMinutes: 3,
       teacher: {
         time: '3 minutes',
@@ -136,7 +140,8 @@ export const lesson1: LessonDefinition = {
       title: 'How AI Learns',
       studentTitle: 'HOW DOES AI LEARN?',
       objectives: lo1,
-      strategies: ['Explicit Instruction', 'Dual Coding', 'Guided Questioning'],
+      iCan: 'I can explain how AI learns from examples.',
+      strategies: ['Explicit instruction'],
       recommendedMinutes: 3,
       teacher: {
         time: '3 minutes',
@@ -162,7 +167,8 @@ export const lesson1: LessonDefinition = {
       title: 'AI Word Lab',
       studentTitle: 'AI WORD LAB',
       objectives: loBoth,
-      strategies: ['Interactive Vocabulary', 'Retrieval Practice'],
+      iCan: 'I can tell what data means.',
+      strategies: ['Interactive vocabulary'],
       recommendedMinutes: 2,
       teacher: {
         time: '2 minutes',
@@ -185,7 +191,8 @@ export const lesson1: LessonDefinition = {
       title: 'Find the Pattern',
       studentTitle: 'AI DETECTIVE: FIND THE PATTERN!',
       objectives: lo1,
-      strategies: ['Inquiry Learning', 'Cooperative Learning'],
+      iCan: 'I can find a pattern.',
+      strategies: ['Inquiry'],
       recommendedMinutes: 6,
       teacher: {
         time: '6 minutes',
@@ -214,7 +221,8 @@ export const lesson1: LessonDefinition = {
       title: 'Pattern Reveal',
       studentTitle: 'WHAT PATTERNS DID WE FIND?',
       objectives: lo1,
-      strategies: ['Student Explanation', 'Misconception Checking'],
+      iCan: 'I can tell a useful pattern from a trick.',
+      strategies: ['Misconception check'],
       recommendedMinutes: 2,
       teacher: {
         time: '2 minutes',
@@ -240,7 +248,8 @@ export const lesson1: LessonDefinition = {
       title: 'Connect to AI',
       studentTitle: 'YOU JUST THOUGHT LIKE AI!',
       objectives: lo1,
-      strategies: ['Concept Consolidation', 'Guided Questioning'],
+      iCan: 'I can explain how AI learns from examples.',
+      strategies: ['Concept consolidation'],
       recommendedMinutes: 4,
       teacher: {
         time: '4 minutes',
@@ -264,7 +273,8 @@ export const lesson1: LessonDefinition = {
       title: 'Good Data vs Bad Data',
       studentTitle: 'GOOD DATA OR BAD DATA?',
       objectives: lo2,
-      strategies: ['Compare & Contrast', 'Worked Examples'],
+      iCan: 'I can tell good data from bad data.',
+      strategies: ['Compare and contrast'],
       recommendedMinutes: 4,
       teacher: {
         time: '4 minutes',
@@ -291,7 +301,8 @@ export const lesson1: LessonDefinition = {
       title: 'Data Detective',
       studentTitle: 'DATA DETECTIVE',
       objectives: lo2,
-      strategies: ['Gamification', 'Formative Assessment', 'Whole-Class Response'],
+      iCan: 'I can tell good data from bad data.',
+      strategies: ['Whole-class response'],
       recommendedMinutes: 5,
       teacher: {
         time: '5 minutes',
@@ -322,7 +333,8 @@ export const lesson1: LessonDefinition = {
       title: 'Train Pixel',
       studentTitle: 'TRAIN PIXEL!',
       objectives: loBoth,
-      strategies: ['Collaborative Problem Solving', 'Classification'],
+      iCan: 'I can choose examples that help AI learn.',
+      strategies: ['Classification'],
       recommendedMinutes: 4,
       teacher: {
         time: '4 minutes',
@@ -349,7 +361,8 @@ export const lesson1: LessonDefinition = {
       title: 'My AI Trainer Challenge',
       studentTitle: 'MY AI TRAINER CHALLENGE',
       objectives: loBoth,
-      strategies: ['Independent Practice', 'Formative Assessment'],
+      iCan: 'I can explain how AI learns from examples.',
+      strategies: ['Independent practice'],
       recommendedMinutes: 3,
       teacher: {
         time: '3 minutes',
@@ -372,7 +385,8 @@ export const lesson1: LessonDefinition = {
       title: 'Bonus Challenge',
       studentTitle: 'BONUS AI TRAINER CHALLENGE',
       objectives: lo2,
-      strategies: ['Higher-Order Thinking', 'Differentiation'],
+      iCan: 'I can tell when data is missing variety.',
+      strategies: ['Stretch thinking'],
       recommendedMinutes: 1,
       teacher: {
         time: '1 minute',
@@ -398,7 +412,8 @@ export const lesson1: LessonDefinition = {
       title: 'Exit Ticket',
       studentTitle: 'BEFORE YOU LEAVE THE AI LAB...',
       objectives: loBoth,
-      strategies: ['Exit Ticket', 'Retrieval Practice', 'Self-Assessment'],
+      iCan: 'I can explain how AI learns from examples.',
+      strategies: ['Exit ticket'],
       recommendedMinutes: 2,
       teacher: {
         time: '2 minutes',
@@ -426,7 +441,8 @@ export const lesson1: LessonDefinition = {
       title: 'Mission Complete',
       studentTitle: 'MISSION 1 COMPLETE!',
       objectives: loBoth,
-      strategies: ['Celebration', 'Recap'],
+      iCan: 'I can teach Pixel how to learn.',
+      strategies: ['Recap'],
       recommendedMinutes: 1,
       teacher: {
         time: '1 minute',

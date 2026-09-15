@@ -17,9 +17,9 @@
   --shadow: 0 10px 28px rgba(27, 42, 74, 0.12);
   --stage-w: 1920px;
   --stage-h: 1080px;
-  --header-h: 78px;
-  --progress-h: 54px;
-  --footer-h: 88px;
+  --header-h: 64px;
+  --progress-h: 48px;
+  --footer-h: 76px;
   --focus: 3px solid #5b4fd6;
 }
 
@@ -70,6 +70,12 @@ a:focus-visible,
 .stage-frame {
   position: relative;
   flex-shrink: 0;
+}
+
+.stage.teacher-mode {
+  --header-h: 78px;
+  --progress-h: 54px;
+  --footer-h: 88px;
 }
 
 .stage {
@@ -144,6 +150,13 @@ a:focus-visible,
   font-family: Fredoka, Nunito, sans-serif;
   font-size: 26px;
   margin: 0;
+  white-space: nowrap;
+}
+
+.screen-count {
+  font-size: 24px;
+  font-weight: 800;
+  color: #445275;
   white-space: nowrap;
 }
 
@@ -240,7 +253,28 @@ a:focus-visible,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  min-height: 48px;
+}
+
+.ican {
+  margin: 0;
+  font-size: 24px;
+  color: #3d4d6f;
+  min-width: 0;
+}
+
+.strategy-chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  background: var(--navy);
+  color: white;
 }
 
 .badges {
@@ -262,10 +296,11 @@ a:focus-visible,
 
 .screen-title {
   font-family: Fredoka, Nunito, sans-serif;
-  font-size: 46px;
-  line-height: 1.05;
-  margin: 0;
+  font-size: 40px;
+  line-height: 1.1;
+  margin: 0 0 8px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .screen-sub {
@@ -359,7 +394,23 @@ a:focus-visible,
   min-height: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.student-timer {
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.notes-toggle {
+  position: absolute;
+  right: 16px;
+  top: 140px;
+  z-index: 8;
 }
 
 .row {
@@ -579,7 +630,7 @@ a:focus-visible,
 
 .vocab-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
 }
 
@@ -618,7 +669,7 @@ a:focus-visible,
 }
 
 .drag-card {
-  width: 148px;
+  width: 168px;
   border: 0;
   padding: 0;
   background: white;
@@ -633,7 +684,7 @@ a:focus-visible,
 
 .drag-card img,
 .drag-card .photo-fallback {
-  height: 96px;
+  height: 118px;
 }
 
 .drag-card .label {
@@ -744,18 +795,17 @@ a:focus-visible,
 }
 
 .step-card {
-  min-height: 240px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-size: 28px;
-  opacity: 0.35;
 }
 
 .step-card.show {
-  opacity: 1;
+  visibility: visible;
 }
 
 .flow {
@@ -775,9 +825,10 @@ a:focus-visible,
 
 .bird-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  height: 250px;
+  height: 280px;
+  flex-shrink: 0;
 }
 
 .compare {
@@ -797,9 +848,21 @@ a:focus-visible,
 }
 
 .game-photo {
-  height: 320px;
-  max-width: 620px;
+  height: 340px;
+  max-width: 720px;
   margin: 0 auto;
+}
+
+.game-photo .photo-frame {
+  height: 250px;
+}
+
+.bonus-cats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  height: 220px;
+  flex-shrink: 0;
 }
 
 .feel-card {
