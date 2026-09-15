@@ -12,22 +12,22 @@ export function Screen10() {
   return (
     <div className="screen-body">
       <h2 className="screen-title">GOOD DATA OR BAD DATA?</h2>
-      <div className="mission-layout" style={{ gridTemplateColumns: '240px 1fr' }}>
+      <div className="mission-layout">
         <div>
           <Pixel mood="confused" size={160} />
-          <div className="speech" style={{ fontSize: 24, marginTop: 8, padding: '14px 16px' }}>
+          <div className="speech" style={{ marginTop: 8, padding: '14px 16px' }}>
             Some examples help me... but some examples confuse me!
           </div>
         </div>
         <div className="compare">
           <div className={`card ${state.revealed ? 'good' : ''}`}>
-            <div className="photo-frame" style={{ height: 220 }}>
+            <div className="photo-frame photo-md">
               <Photo asset={assets.birdEagle} />
             </div>
-            <p style={{ fontSize: 32, margin: '10px 0 0' }}>Label: BIRD</p>
+            <p className="data-label">Label: BIRD</p>
             {state.revealed ? (
               <>
-                <p style={{ fontSize: 36, margin: 0 }}>GOOD DATA</p>
+                <p className="data-verdict">GOOD DATA</p>
                 <p>Clear, correct, and useful</p>
               </>
             ) : (
@@ -35,13 +35,13 @@ export function Screen10() {
             )}
           </div>
           <div className={`card ${state.revealed ? 'bad' : ''}`}>
-            <div className="photo-frame" style={{ height: 220 }}>
+            <div className="photo-frame photo-md">
               <Photo asset={assets.birdRobin} />
             </div>
-            <p style={{ fontSize: 32, margin: '10px 0 0' }}>Label: CAT</p>
+            <p className="data-label">Label: CAT</p>
             {state.revealed ? (
               <>
-                <p style={{ fontSize: 36, margin: 0 }}>BAD DATA</p>
+                <p className="data-verdict">BAD DATA</p>
                 <p>The photo is clear, but the label is wrong</p>
               </>
             ) : (
@@ -99,7 +99,7 @@ export function Screen11() {
       <h2 className="screen-title">🎮 DATA DETECTIVE</h2>
       <p className="screen-sub">Can you help Pixel choose good training data?  ⭐ {state.score} / 6</p>
       <div className="card game-photo" style={{ padding: 12 }}>
-        <div className="photo-frame" style={{ height: 250 }}>
+        <div className="photo-frame">
           <Photo asset={round.asset} blur={round.blur} />
         </div>
         {round.prompt ? <p className="screen-sub">{round.prompt}</p> : null}

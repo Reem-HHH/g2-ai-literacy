@@ -25,20 +25,10 @@ export function PresentationShell({ children }: { children: ReactNode }) {
   const { state, lesson, screen, screenCount } = app;
   const teacher = state.teacherMode;
   const [now, setNow] = useState(() => new Date());
-  const [scale, setScale] = useState(1);
 
   useEffect(() => {
     const id = window.setInterval(() => setNow(new Date()), 1000);
     return () => window.clearInterval(id);
-  }, []);
-
-  useEffect(() => {
-    const update = () => {
-      setScale(Math.min(window.innerWidth / 1920, window.innerHeight / 1080));
-    };
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
   }, []);
 
   const remaining = Math.max(0, lesson.durationMinutes * 60 * 1000 - state.lessonTimer.elapsedMs);
@@ -48,12 +38,7 @@ export function PresentationShell({ children }: { children: ReactNode }) {
   return (
     <div className="stage-wrap">
       <div
-        className="stage-frame"
-        style={{ width: 1920 * scale, height: 1080 * scale }}
-      >
-      <div
         className={`stage ${app.reducedMotion ? 'reduced' : ''} ${teacher ? 'teacher-mode' : 'student-mode'}`}
-        style={{ transform: `scale(${scale})` }}
       >
         <header className="lesson-header">
           {teacher ? (
@@ -257,7 +242,6 @@ export function PresentationShell({ children }: { children: ReactNode }) {
             ) : null}
           </aside>
         ) : null}
-      </div>
       </div>
     </div>
   );

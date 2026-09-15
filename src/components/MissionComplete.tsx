@@ -46,7 +46,7 @@ export function MissionComplete({
               </div>
             ))}
           </div>
-          <div className="card center" style={{ marginTop: 12, background: '#fde68a', fontSize: 28 }}>
+          <div className="card center badge-card">
             {badgeTitle}<br />{badgeName}
           </div>
         </div>

@@ -30,12 +30,13 @@ export function Pixel({ mood = 'curious', size = 240, className }: Props) {
 
   return (
     <svg
-      className={className}
+      className={`pixel ${className ?? ''}`.trim()}
       width={size}
       height={size}
       viewBox="0 0 200 220"
       role="img"
       aria-label={`Pixel the robot looking ${mood}`}
+      style={{ width: `min(${size}px, 46vw, 42vh)`, height: 'auto' }}
     >
       <circle cx="100" cy="110" r="92" fill="white" opacity="0.92" />
       <ellipse cx="100" cy="208" rx="48" ry="8" fill="rgba(27,42,74,0.12)" />

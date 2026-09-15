@@ -53,7 +53,7 @@ export function Screen13() {
     <div className="screen-body">
       <h2 className="screen-title">✏️ MY AI TRAINER CHALLENGE</h2>
       {!state.shown ? (
-        <div className="card center" style={{ fontSize: 32, padding: 40 }}>
+        <div className="card center prompt-card">
           Question {state.q + 1} of 3 is ready.
           <div style={{ marginTop: 16 }}>
             <Btn variant="primary" large onClick={() => setState({ ...state, shown: true })}>
@@ -67,11 +67,11 @@ export function Screen13() {
           {current.visual ? (
             <div className="compare" style={{ maxWidth: 900, margin: '0 auto 12px' }}>
               <div className="card good">
-                <div className="photo-frame" style={{ height: 180 }}><Photo asset={assets.dogClear2} /></div>
+                <div className="photo-frame photo-md"><Photo asset={assets.dogClear2} /></div>
                 <p>DOG</p>
               </div>
               <div className="card bad">
-                <div className="photo-frame" style={{ height: 180 }}><Photo asset={assets.dogClear} blur /></div>
+                <div className="photo-frame photo-md"><Photo asset={assets.dogClear} blur /></div>
                 <p>CAT</p>
               </div>
             </div>
@@ -140,7 +140,7 @@ export function Screen14() {
       </div>
       <p className="screen-sub">Pixel learns only from these orange cats. What might happen when Pixel sees a cat that looks different?</p>
       <div className="row" style={{ justifyContent: 'center' }}>
-        <div className="photo-frame" style={{ width: 160, height: 110 }}>
+        <div className="photo-frame bonus-other">
           <Photo asset={assets.catClear1} />
         </div>
       </div>
@@ -205,7 +205,7 @@ export function Screen15() {
         <h2 className="screen-title">🎟 BEFORE YOU LEAVE THE AI LAB...</h2>
         <div className="card center" style={{ padding: 36 }}>
           <p className="screen-sub">Question {state.q + 1} of 3</p>
-          <p className="screen-title" style={{ fontSize: 40 }}>{current.ask}</p>
+          <p className="screen-sub">{current.ask}</p>
           <p className="feedback" style={{ minHeight: 60 }}>
             {state.revealed ? current.answer : ''}
           </p>
@@ -241,7 +241,7 @@ export function Screen15() {
               markActivityComplete(screen.id);
             }}
           >
-            <div style={{ fontSize: 64 }}>{item.emoji}</div>
+            <div className="feel-emoji">{item.emoji}</div>
             {item.label}
           </button>
         ))}

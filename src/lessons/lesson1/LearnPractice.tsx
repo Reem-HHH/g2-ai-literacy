@@ -197,7 +197,7 @@ export function Screen08() {
       <BirdStrip />
       <div className="grid-4" style={{ marginTop: 8 }}>
         {patterns.map((pattern, idx) => (
-          <div key={pattern} className="card center" style={{ fontSize: 28, minHeight: 72, opacity: idx < state.revealed ? 1 : 0.25 }}>
+          <div key={pattern} className="card center pattern-chip" style={{ opacity: idx < state.revealed ? 1 : 0.25 }}>
             {idx < state.revealed ? pattern : '???'}
           </div>
         ))}
@@ -288,11 +288,11 @@ export function Screen09() {
             </div>
           ) : (
             <div className="grid-2" style={{ marginTop: 18 }}>
-              <div className="card center" style={{ fontSize: 32 }}>
+              <div className="card center recap-fill">
                 AI learns from ______.
                 <div style={{ marginTop: 10 }}><strong>DATA</strong></div>
               </div>
-              <div className="card center" style={{ fontSize: 32 }}>
+              <div className="card center recap-fill">
                 AI looks for ______.
                 <div style={{ marginTop: 10 }}><strong>PATTERNS</strong></div>
               </div>

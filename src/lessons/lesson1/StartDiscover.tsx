@@ -88,7 +88,7 @@ export function Screen03() {
       <div className="grid-4">
         {examples.map((item) => (
           <div className="card example-card" key={item.label}>
-            <div className="photo-frame" style={{ height: 220 }}>
+            <div className="photo-frame">
               <Photo asset={item.asset} />
             </div>
             <p>{item.label}</p>
